@@ -1,23 +1,34 @@
 <html ng-app="myapp">
 <head>
 	<title>Angular Json Test</title>
-	
 	<link rel="stylesheet" href="css/custom.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<script type="text/javascript" src="js/custom.js"></script>
-	
 </head>
-<body>
-	<div id="content" />
-	<input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{yourName}}!</h1>
+<body ng-controller="myController">
+	<header class="header-test">
+		<div class="title-page">Angular and Json Externale Page Test</div>
+		<div class="subtitle">by Cristian Gartner</div>
+	</header>
+	<div class="filter-bar">
+		<input class="module-search" type="text" data-ng-model="searchItem">
+		<div class="view-list"></div>
+		<div class="view-Grid"></div>
+	</div>
+	<div id="content">
+		<div class="type-view">
+			<section ng-repeat="events in myscope.events | filter:searchItem" class="module-item">
+				<h3 class="module-title">{{events.title}}</h3>
+				<figure class="module-img">
+					<img src="{{events.img}}" alt="{{events.title}}">
+				</figure>
+				<div class="module-date">{{events.date}}</div>
+		    </section>
+		</div>
 		<div class="clear"></div>
 	</div>
 </body>
-<script type="text/javascript">
-	window.globJson;
-</script>
+
 </html>
