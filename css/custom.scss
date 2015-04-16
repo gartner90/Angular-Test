@@ -210,4 +210,9 @@ body {
 			padding-left: 55px;
 		}
 	}
+
+	.filter-bar:before {
+		right: auto;
+		left: 0;
+	}
 }

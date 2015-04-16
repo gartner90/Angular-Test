@@ -170,4 +170,8 @@ body {
   #list .module-item .module-date.ng-binding {
     padding-left: 55px;
   }
+  .filter-bar:before {
+    right: auto;
+    left: 0;
+  }
 }
