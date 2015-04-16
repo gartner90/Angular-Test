@@ -81,5 +81,5 @@ app.controller('myController', function($scope, $timeout) {
     $timeout( function(){ 
     	var json = obJson;
     	$scope.myscope = json;
-    }, 1800);//Time while load items
+    }, 2500);//Time while load items
 });
