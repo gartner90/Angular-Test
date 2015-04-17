@@ -89,7 +89,15 @@ $(document).ready(function() {
 	       $('.search-filter').removeClass('active');
 	    }
 	});
- 
+
+	$(window).resize(function() {
+		if ($('body').attr('id') != 'slide') {
+			setTimeout(function() {
+				$('.type-view').slick('unslick');
+			}, 80);
+		}
+	});
+
 	//Slide function
 	function slideSlick() {
 		$( '.view-slide' ).click(function() {
