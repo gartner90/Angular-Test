@@ -192,13 +192,13 @@ body {
     padding-left: 55px;
   }
   .filter-bar .module-search {
-    margin-left: 30px;
+    margin-left: 10%;
     padding-left: 30px;
   }
   .view-content {
     margin: 0 auto;
     text-align: center;
-    width: 100%;
+    width: 95%;
   }
   .filter-bar-scrolltop {
     padding-bottom: 5px;

@@ -98,5 +98,5 @@ app.controller('myController', function($scope, $timeout) {
     $timeout( function(){ 
     	var json = obJson;
     	$scope.myscope = json;
-    }, 1900);//Time while load items
+    }, 2500);//Time while load items
 });
