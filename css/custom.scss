@@ -1,4 +1,5 @@
 @red: #CF0000;
+
 body {
 	font-family: arial;
 	margin: 0;
@@ -7,19 +8,20 @@ body {
 
 .header-test {
 	background-color: @red;
+	border-bottom: solid 5px #333;
 	color: white;
+	font-weight: bold;
 	padding: 15px;
 	text-align: center;
-	font-weight: bold;
 
 	.title-page {
 		font-size: 30px;
 	}
 
 	.subtitle {
+		color: #350505;
 		font-size: 20px;
 		font-weight: normal;
-		color: #350505;
 	}
 }
 
@@ -27,24 +29,47 @@ body {
 	padding: 15px;
 }
 
+.filter-bar-scrolltop {
+	background: rgba(179, 179, 179, 0.72);
+	border-top: solid 2px rgba(51, 51, 51, 0.43);
+	bottom: 0;
+	padding-bottom: 15px;
+	position: fixed;
+	width: 100%;
+
+	.filter-bar .view-list, .filter-bar .view-grid {
+		background-color: rgba(255, 255, 255, 0.6);
+		box-shadow: 0 0 5px #fff;
+	}
+}
+
+.search-filter.active {
+	height: 45px;
+}
+
 .module-item {
-	width: 23%;
-	display: inline-block;
-	vertical-align: top;
 	background-color: #E8E8E8;
 	box-sizing: border-box;
-	padding: 15px;
+	display: inline-block;
 	margin: 1%;
+	padding: 15px;
+	transition: background-color .3s;
+	vertical-align: top;
+	width: 23%;
+
+	&:hover {
+		background-color: #C8C8C8;
+	}
 
 	h3 {
-		width: 100%;
-		margin: 0;
 		background-color: #333;
-		color: #FFF;
-		padding: 9px;
 		box-sizing: border-box;
-		text-align: center;
+		color: #FFF;
 		font-weight: 400;
+		margin: 0;
+		padding: 9px;
+		text-align: center;
+		width: 100%;
 	}
 
 	.module-img {
@@ -56,38 +81,33 @@ body {
 	}
 
 	.module-date.ng-binding {
-		text-align: center;
-		margin-top: 10px;
-		font-weight: 600;
 		color: #5E0707;
+		font-weight: 600;
+		margin-top: 10px;
+		text-align: center;
 	}
 }
 
-
-
 .filter-bar {
-    margin-top: 40px;
-    max-width: 300px;
-    margin: 0 auto;
-    margin-top: 22px;
-    position: relative;
+		max-width: 300px;
+		margin: 22px auto 0;
+		position: relative;
 
-    &:before {
-	    content:' ';
-	    width: 25px;
-	    height: 25px;
-	    position: absolute;
-	    right: 107px;
+    .search-icon {
 	    background-image: url(../img/icon-search.png);
+	    display: inline-block;
+	    height: 25px;
+	    margin-left: -8px;
+	    width: 25px;
 	}
 
     .module-search {
-	    height: 25px;
 	    background-color: #E8E8E8;
 	    border: 0;
 	    display: inline-block;
-	    vertical-align: top;
+	    height: 25px;
 	    padding: 6px;
+	    vertical-align: top;
 	}
 
 	.view-grid {
@@ -101,12 +121,12 @@ body {
 	}
 
 	.view-list, .view-grid {
-		width: 25px;
-		height: 25px;
 		background-repeat: no-repeat;
-		display: inline-block;
-		transition: all .5s;
 		cursor: pointer;
+		display: inline-block;
+		height: 25px;
+		transition: all .5s;
+		width: 25px;
 
 		&:hover {
 			opacity: .5;
@@ -114,38 +134,42 @@ body {
 	}
 }
 
+.view-content {
+	display: inline-block;
+}
+
 #list {
 	.module-item {
-		width: 99%;
-		margin: .5%;
 		border-bottom: solid 3px #B0B0B0;
+		margin: .5%;
+		width: 99%;
 
 		h3 {
 			background-color: transparent;
 			color: #333;
-			text-align: left;
 			padding-left: 86px;
+			text-align: left;
 		}
 
 		.module-img {
-			width: 70px;
 			border-radius: 53%;
-			overflow: hidden;
 			float: left;
 			margin-top: -42px;
+			overflow: hidden;
+			width: 70px;
 		}
 
 		.module-date.ng-binding {
-			margin-top: 2px;
-			font-weight: 400;
-			text-align: left;
-			padding-left: 85px;
 			font-size: 12px;
+			font-weight: 400;
+			margin-top: 2px;
+			padding-left: 85px;
+			text-align: left;
 		}
 	}
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 900px) {
 
 	.header-test .title-page {
 		font-size: 24px;
@@ -156,7 +180,7 @@ body {
 	}
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 700px) {
 	
 	.header-test .title-page {
 		font-size: 20px;
@@ -175,7 +199,7 @@ body {
 	}
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
 	
 	.header-test .title-page {
 		font-size: 21px;
@@ -197,13 +221,13 @@ body {
 		margin: 1%;
 
 		 .module-img {
-			width: 40px;
 			margin-top: -37px;
+			width: 40px;
 		}
 
 		h3 {
-			padding-left: 56px;
 			font-size: 15px;
+			padding-left: 56px;
 		}
 
 		.module-date.ng-binding {
@@ -211,12 +235,22 @@ body {
 		}
 	}
 
-	.filter-bar:before {
-		right: auto;
-		left: 0;
+	.filter-bar .module-search {
+		margin-left: 30px;
+		padding-left: 30px;
 	}
 
-	.filter-bar .module-search {
-		padding-left: 30px;
+	.view-content {
+		margin: 0 auto;
+		text-align: center;
+		width: 100%;
+	}
+
+	.filter-bar-scrolltop {
+		padding-bottom: 5px;
+
+		.filter-bar {
+			margin-top: 12px;
+		}
 	}
 }

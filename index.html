@@ -13,11 +13,18 @@
 		<div class="title-page">Angular and Json Externale Page Test</div>
 		<div class="subtitle">by Cristian Gartner</div>
 	</header>
-	<div class="filter-bar">
-		<input class="module-search" type="text" data-ng-model="searchItem">
-		<div class="view-list"></div>
-		<div class="view-Grid"></div>
+	<div class="search-filter"></div>
+	<div class="content-filter-bar">
+		<div class="filter-bar">
+			<input class="module-search" type="text" data-ng-model="searchItem">
+			<div class="search-icon"></div>
+			<div class="view-content">
+				<div class="view-list"></div>
+				<div class="view-Grid"></div>
+			</div>
+		</div>
 	</div>
+
 	<div id="content">
 		<div class="type-view">
 			<section ng-repeat="events in myscope.events | filter:searchItem" class="module-item">

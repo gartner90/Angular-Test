@@ -16,6 +16,7 @@ $(document).ready(function() {
 			mapear();
 		}
 	})
+
 	//Separate items
 	function mapear() {
 		var divN = objects.indexOf('<div id="main-content"'),
@@ -37,6 +38,7 @@ $(document).ready(function() {
 		    return h.replace("'", "");
 		});
 		totalItems = $('.postcard-left').length;
+
 		//Preparate Json object
 		$('.postcard-link').find('.postcard-left').each( function(index){
 			var titleT = $('h3', this).text(),
@@ -45,14 +47,17 @@ $(document).ready(function() {
 				date = $.trim(dateT),
 				domine = 'http://events.stanford.edu',
 				img = $('.postcard-image img', this).attr('src'),
-				domineImg = domine+img;
+				domineImg = domine+img,
+				finishJson;
 
 			if (index === totalItems - 1) {
-		        objEvent += '{"title":' + '"' + title + '"'+ ',"date":' + '"' + date + '"' + ',"img":' + '"' + domineImg + '"}';
+		        finishJson = '"}';
 		    } else {
-		    	objEvent += '{"title":' + '"' + title + '"'+ ',"date":' + '"' + date + '"' + ',"img":' + '"' + domineImg + '"},';
+		    	finishJson = '"},';
 		    }
+		    objEvent += '{"title":' + '"' + title + '"'+ ',"date":' + '"' + date + '"' + ',"img":' + '"' + domineImg + finishJson;
 		});
+
 		//Convert strings to Json object
 		jsonEvents = '{"events":[' + objEvent + ']}';
 		obJson = JSON.parse(jsonEvents);
@@ -70,16 +75,28 @@ $(document).ready(function() {
 	$( '.view-grid' ).click(function() {
 		$('.type-view').attr("id","grid");
 	});
+
+	//Filter bar to fixe position
+	$(window).scroll(function () {
+	    if ($(this).scrollTop() > 150) {
+	       $('.content-filter-bar').addClass('filter-bar-scrolltop');
+	       $('.search-filter').addClass('active');
+	    } else {
+	       $('.content-filter-bar').removeClass('filter-bar-scrolltop');
+	       $('.search-filter').removeClass('active');
+	    }
+	});
 	
 }); 
 
 //--Angular Events
 
 var app = angular.module('myapp', []);
+
 //Json object in my Angular controller
 app.controller('myController', function($scope, $timeout) {
     $timeout( function(){ 
     	var json = obJson;
     	$scope.myscope = json;
-    }, 2500);//Time while load items
+    }, 1900);//Time while load items
 });

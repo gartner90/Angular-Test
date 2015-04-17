@@ -5,40 +5,61 @@ body {
 }
 .header-test {
   background-color: #cf0000;
+  border-bottom: solid 5px #333333;
   color: white;
+  font-weight: bold;
   padding: 15px;
   text-align: center;
-  font-weight: bold;
 }
 .header-test .title-page {
   font-size: 30px;
 }
 .header-test .subtitle {
+  color: #350505;
   font-size: 20px;
   font-weight: normal;
-  color: #350505;
 }
 #content {
   padding: 15px;
 }
+.filter-bar-scrolltop {
+  background: rgba(179, 179, 179, 0.72);
+  border-top: solid 2px rgba(51, 51, 51, 0.43);
+  bottom: 0;
+  padding-bottom: 15px;
+  position: fixed;
+  width: 100%;
+}
+.filter-bar-scrolltop .filter-bar .view-list,
+.filter-bar-scrolltop .filter-bar .view-grid {
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 5px white;
+}
+.search-filter.active {
+  height: 45px;
+}
 .module-item {
-  width: 23%;
-  display: inline-block;
-  vertical-align: top;
   background-color: #e8e8e8;
   box-sizing: border-box;
-  padding: 15px;
+  display: inline-block;
   margin: 1%;
+  padding: 15px;
+  transition: background-color 0.3s;
+  vertical-align: top;
+  width: 23%;
+}
+.module-item:hover {
+  background-color: #c8c8c8;
 }
 .module-item h3 {
-  width: 100%;
-  margin: 0;
   background-color: #333333;
-  color: white;
-  padding: 9px;
   box-sizing: border-box;
-  text-align: center;
+  color: white;
   font-weight: 400;
+  margin: 0;
+  padding: 9px;
+  text-align: center;
+  width: 100%;
 }
 .module-item .module-img {
   margin: 0;
@@ -47,33 +68,30 @@ body {
   width: 100%;
 }
 .module-item .module-date.ng-binding {
-  text-align: center;
-  margin-top: 10px;
-  font-weight: 600;
   color: #5e0707;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
 }
 .filter-bar {
-  margin-top: 40px;
   max-width: 300px;
-  margin: 0 auto;
-  margin-top: 22px;
+  margin: 22px auto 0;
   position: relative;
 }
-.filter-bar:before {
-  content: ' ';
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: 107px;
+.filter-bar .search-icon {
   background-image: url(../img/icon-search.png);
+  display: inline-block;
+  height: 25px;
+  margin-left: -8px;
+  width: 25px;
 }
 .filter-bar .module-search {
-  height: 25px;
   background-color: #e8e8e8;
   border: 0;
   display: inline-block;
-  vertical-align: top;
+  height: 25px;
   padding: 6px;
+  vertical-align: top;
 }
 .filter-bar .view-grid {
   background-image: url(../img/icon-grid.png);
@@ -85,43 +103,46 @@ body {
 }
 .filter-bar .view-list,
 .filter-bar .view-grid {
-  width: 25px;
-  height: 25px;
   background-repeat: no-repeat;
-  display: inline-block;
-  transition: all .5s;
   cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  transition: all .5s;
+  width: 25px;
 }
 .filter-bar .view-list:hover,
 .filter-bar .view-grid:hover {
   opacity: .5;
 }
+.view-content {
+  display: inline-block;
+}
 #list .module-item {
-  width: 99%;
-  margin: .5%;
   border-bottom: solid 3px #b0b0b0;
+  margin: .5%;
+  width: 99%;
 }
 #list .module-item h3 {
   background-color: transparent;
   color: #333333;
-  text-align: left;
   padding-left: 86px;
+  text-align: left;
 }
 #list .module-item .module-img {
-  width: 70px;
   border-radius: 53%;
-  overflow: hidden;
   float: left;
   margin-top: -42px;
+  overflow: hidden;
+  width: 70px;
 }
 #list .module-item .module-date.ng-binding {
-  margin-top: 2px;
-  font-weight: 400;
-  text-align: left;
-  padding-left: 85px;
   font-size: 12px;
+  font-weight: 400;
+  margin-top: 2px;
+  padding-left: 85px;
+  text-align: left;
 }
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 900px) {
   .header-test .title-page {
     font-size: 24px;
   }
@@ -129,7 +150,7 @@ body {
     width: 31%;
   }
 }
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 700px) {
   .header-test .title-page {
     font-size: 20px;
   }
@@ -143,7 +164,7 @@ body {
     font-size: 12px;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .header-test .title-page {
     font-size: 21px;
   }
@@ -160,21 +181,29 @@ body {
     margin: 1%;
   }
   #list .module-item .module-img {
-    width: 40px;
     margin-top: -37px;
+    width: 40px;
   }
   #list .module-item h3 {
-    padding-left: 56px;
     font-size: 15px;
+    padding-left: 56px;
   }
   #list .module-item .module-date.ng-binding {
     padding-left: 55px;
   }
-  .filter-bar:before {
-    right: auto;
-    left: 0;
-  }
   .filter-bar .module-search {
+    margin-left: 30px;
     padding-left: 30px;
+  }
+  .view-content {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+  }
+  .filter-bar-scrolltop {
+    padding-bottom: 5px;
+  }
+  .filter-bar-scrolltop .filter-bar {
+    margin-top: 12px;
   }
 }
