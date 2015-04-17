@@ -6,6 +6,12 @@ body {
 	padding: 0;
 }
 
+div, button {
+	&:focus {
+		outline: 0;
+	}
+}
+
 .header-test {
 	background-color: @red;
 	border-bottom: solid 5px #333;
@@ -26,7 +32,60 @@ body {
 }
 
 #content {
+	overflow-x: hidden;
 	padding: 15px;
+	position: relative;
+}
+
+#slide {
+	.filter-bar-scrolltop {
+		display: none;
+	}
+
+	#content {
+		cursor: -webkit-grab;
+		cursor: -moz-grab;
+		cursor: -o-grab;
+		cursor: -ms-grab;
+	}
+}
+
+.slick-prev, .slick-next {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	font-size: 0;
+	background: 0;
+	border: 0;
+
+	&:after {
+		content: '';
+		background-color: @red;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		vertical-align: middle;
+		top: 40%;
+		border-radius: 50%;
+		transition: all .3s;
+		cursor: pointer;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+}
+
+.slick-prev {
+	&:after {
+		left: 20px;
+		background-image: url(../img/left.png);
+	}
+}
+
+.slick-next {
+	&:after {
+		right: 20px;
+		background-image: url(../img/right.png);
+	}
 }
 
 .filter-bar-scrolltop {
@@ -36,11 +95,7 @@ body {
 	padding-bottom: 15px;
 	position: fixed;
 	width: 100%;
-
-	.filter-bar .view-list, .filter-bar .view-grid {
-		background-color: rgba(255, 255, 255, 0.6);
-		box-shadow: 0 0 5px #fff;
-	}
+	z-index: 1;
 }
 
 .search-filter.active {
@@ -56,6 +111,10 @@ body {
 	transition: background-color .3s;
 	vertical-align: top;
 	width: 23%;
+
+	#slide & {
+		margin: 5px;
+	}
 
 	&:hover {
 		background-color: #C8C8C8;
@@ -88,10 +147,14 @@ body {
 	}
 }
 
+.view-search {
+	display: inline-block;
+}
+
 .filter-bar {
-		max-width: 300px;
-		margin: 22px auto 0;
-		position: relative;
+	max-width: 340px;
+	margin: 22px auto 0;
+	position: relative;
 
     .search-icon {
 	    background-image: url(../img/icon-search.png);
@@ -115,12 +178,17 @@ body {
 		margin-left: 5px;
 	}
 
+	.view-slide {
+		background-image: url(../img/icon-slide.png);
+		margin-left: 5px;
+	}
+
 	.view-list {
 		background-image: url(../img/icon-list.png);
 		margin-left: 30px;
 	}
 
-	.view-list, .view-grid {
+	.view-list, .view-grid, .view-slide {
 		background-repeat: no-repeat;
 		cursor: pointer;
 		display: inline-block;
@@ -136,6 +204,7 @@ body {
 
 .view-content {
 	display: inline-block;
+	overflow-x: hidden;
 }
 
 #list {
@@ -197,6 +266,10 @@ body {
 			font-size: 12px;
 		}
 	}
+
+	#slide .module-item {
+		margin: 0;
+	}
 }
 
 @media screen and (max-width: 450px) {
@@ -210,10 +283,8 @@ body {
 	}
 
 	.filter-bar {
-		margin-left: 19px;
-
 		.view-list {
-			margin-left: 16px;
+			margin-left: 0;
 		}
 	}
 
@@ -236,7 +307,6 @@ body {
 	}
 
 	.filter-bar .module-search {
-		margin-left: 10%;
 		padding-left: 30px;
 	}
 
@@ -252,5 +322,11 @@ body {
 		.filter-bar {
 			margin-top: 12px;
 		}
+	}
+
+	.view-search {
+		display: block;
+		width: 230px;
+		margin: 0 auto 10px;
 	}
 }

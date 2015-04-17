@@ -65,15 +65,18 @@ $(document).ready(function() {
 	}
 	setTimeout(function() {
       console.clear();
-	}, 1800);
+      slideSlick();
+	}, 3000);
 
 	//Swiche view
 	$( '.view-list' ).click(function() {
-		$('.type-view').attr("id","list");
+		$('body').attr("id","list");
+		$('.type-view').slick('unslick');
 	});
 
 	$( '.view-grid' ).click(function() {
-		$('.type-view').attr("id","grid");
+		$('body').attr("id","grid");
+		$('.type-view').slick('unslick');
 	});
 
 	//Filter bar to fixe position
@@ -86,8 +89,33 @@ $(document).ready(function() {
 	       $('.search-filter').removeClass('active');
 	    }
 	});
-	
-}); 
+ 
+	//Slide function
+	function slideSlick() {
+		$( '.view-slide' ).click(function() {
+			$('body').attr("id","slide");
+			$('.type-view').slick({
+			  slidesToShow: 3,
+			  centerMode: true,
+			  slidesToScroll: 2,
+			  responsive: [
+			    {
+			      breakpoint: 900,
+			      settings: {
+			        slidesToShow: 2,
+			      }
+			    },
+			    {
+			      breakpoint: 550,
+			      settings: {
+					slidesToShow: 1
+			      }
+			    }
+			  ]
+			});
+		});
+	}
+});
 
 //--Angular Events
 

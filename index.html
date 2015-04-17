@@ -5,6 +5,7 @@
 	<meta name="viewport" content="initial-scale=1">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script>
+	<script type="text/javascript" src="js/slick.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<script type="text/javascript" src="js/custom.js"></script>
 </head>
@@ -16,11 +17,14 @@
 	<div class="search-filter"></div>
 	<div class="content-filter-bar">
 		<div class="filter-bar">
-			<input class="module-search" type="text" data-ng-model="searchItem">
-			<div class="search-icon"></div>
+			<div class="view-search">
+				<input class="module-search" type="text" data-ng-model="searchItem">
+				<div class="search-icon"></div>
+			</div>
 			<div class="view-content">
 				<div class="view-list"></div>
-				<div class="view-Grid"></div>
+				<div class="view-grid"></div>
+				<div class="view-slide"></div>
 			</div>
 		</div>
 	</div>
@@ -30,7 +34,7 @@
 			<section ng-repeat="events in myscope.events | filter:searchItem" class="module-item">
 				<h3 class="module-title">{{events.title}}</h3>
 				<figure class="module-img">
-					<img src="{{events.img}}" alt="{{events.title}}">
+					<img class="lazy" src="{{events.img}}" alt="{{events.title}}">
 				</figure>
 				<div class="module-date">{{events.date}}</div>
 		    </section>
